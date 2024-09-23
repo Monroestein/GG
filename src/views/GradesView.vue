@@ -2,57 +2,84 @@
 
 <template>
     <main>
-        
-        <div class="left">
-            <img :src="background_image" alt="">
-        </div>
-        
-        <div class="right">
-            <h2>{{ this.name }}</h2>
-            <h3>{{ released }}</h3>
-        </div>
+        <GameCard :name="this.name"
+                  :date="this.date"
+                  :rate="this.rate"
+                  :image="this.image"
+                  :platforms="this.platforms" />
     </main>
 </template>
 
 <script>
+
+import GameCard  from '@/components/GameCard.vue';
+
 export default {
     name: 'grades-view',
     props: {
         id:{
-            type: Number,
-            required: true
-        },
-        name:{
             type: String,
             required: true
-        },
-        background_image:{
-            type: String
-        },
-        released:{
-            type: String
-        },
-        rating:{
-            type: Number
-        },
-        platforms:{
-            name:{
-                type: String,
-            }
         }
     },
     data: function(){
-        return {}
+        return {
+            name:"",
+            platforms:[],
+            date:"",
+            rate: 0,
+            image:""
+        }
     },
     // computed: {},
-    // methods: {}
+    methods: {
+        async fetchGame(){
+            try{
+                const response = await fetch("https://api.rawg.io/api/games/"+this.id+"?key=b730c728f6124b9dba5cf40a312f0f57")
+
+                if (!response.ok){
+                    if (response.status===404){
+                        alert(`Game not found.`)
+                        return
+                    }
+                    else {
+                        throw new Error(`HTTP Error`+response.status)
+                    }
+                }
+
+                const json = await response.json()
+
+                console.log(json)
+
+                this.name=json.name
+                this.date=json.released
+                this.rate=json.rating
+                this.image=json.background_image
+
+                json.parent_platforms.forEach((game)=>{
+                    game.platform.name
+                    // console.log(game.platform.name)
+                    this.platforms.push(game.platform.name)
+                })
+
+            } catch (error) {
+                console.log(error)
+            }
+        }
+    },
     // watch: {},
-    // components: {},
+    components: {
+        GameCard
+    },
     // mixins: [],
     // filters: {},
     // -- Lifecycle Methods
+    created(){
+        this.fetchGame()
+    }
     // -- End Lifecycle Methods
 }
+
 </script>
 
 <style scoped>

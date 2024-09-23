@@ -5,7 +5,11 @@
       <div class="card" v-for="game in games" :key="game.id">
         <img :src="game.background_image" alt="Game Poster">
         <h2 class="game_title">{{ game.name }}</h2>
-        <button @click="redirectTo(game.name)">Rate game</button>
+        <h4 class="game_title">
+            <i class="fa-solid fa-star"></i>
+            {{ game.rating }}
+        </h4>
+        <button @click="redirectTo(game.id)">Rate game</button>
       </div>
     </main>
 </template>
@@ -50,8 +54,8 @@ export default {
             this.games = gameData
             console.log(gameData) },
 
-        redirectTo(name){
-            this.$router.push('/grades/' + name)
+        redirectTo(id){
+            this.$router.push('/grades/' + id)
         }
     },
     // watch: {},
@@ -89,6 +93,10 @@ main{
 
 .game_title{
     margin: 1rem auto;
+}
+
+i{
+    font-size: smaller;
 }
 
 button{

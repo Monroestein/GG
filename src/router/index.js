@@ -14,8 +14,9 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/grades/:name',
+    path: '/grades/:id',
     component: GradesView,
+    props: true
   },
   {
     path: '/about',
