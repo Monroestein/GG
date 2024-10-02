@@ -6,15 +6,15 @@
             <h4 id="alert" v-if="alert">This game hasn't been graded yet.</h4>
         </div>
 
-        <div class="users_grades">
+        <div class="users_grades" id="grade">
             <div class="grade" v-if="newGrade">
                 <h4>@{{ username }}</h4>
                 <h5 style="margin-bottom:8px;"><i class="fa-solid fa-star"></i> {{ grade }}</h5>
                 <p>{{ comment }}</p>
 
                 <div class="buttons">
-                    <button>Edit</button>
-                    <button>Delete</button>
+                    <button @click="showForm">Edit</button>
+                    <button @click="deleteGrade">Delete</button>
                 </div>
 
             </div>
@@ -35,7 +35,7 @@
             </form>
         </div>
 
-        <button @click="showForm">Add grade</button>
+        <button @click="showForm(); hideButtonAddGrade();" v-if="buttonToAddGrade">Add grade</button>
 
     </div>
 </template>
@@ -51,18 +51,28 @@ export default {
             comment:"",
             formToAddGrade: false,
             newGrade: false,
-            alert:true
+            alert:true,
+            buttonToAddGrade:true
         }
     },
     // computed: {},
     methods: {
         showForm(){
             this.formToAddGrade = true;
+            this.buttonToAddGrade = false
         },
         hideForm(){
             this.formToAddGrade = false;
             this.newGrade = true
             this.alert=false
+        },
+        hideButtonAddGrade(){
+            this.buttonToAddGrade = false
+        },
+        deleteGrade(){
+            document.getElementById('grade').style.display="none";
+            this.buttonToAddGrade = true;
+            this.alert=true;
         }
     },
     // watch: {},
@@ -111,30 +121,29 @@ export default {
     }
 
     .buttons{
-        margin: 1.5rem auto .2rem auto ;
+        margin-top: 1rem;
+        text-align: end;
+
     }
 
     .users_grades{
         margin: 1rem auto;
         width: 80%;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: stretch;
-        gap: 1rem;
     }
 
     .grade{
         border: 1px solid #d9ff725b;
         border-radius: 5px;
+        text-align: start;
         padding: 0rem 1rem 1rem 1rem;
-        width: 30%;
+        margin: 0 auto;
+        width: 60%;
         min-width: 200px;
     }
 
     .addingGrade{
         margin: .5rem auto;
-        width: 45%;
+        width: 60%;
         border-radius: 5px;
         border: 1px solid #daff7230;
         height: fit-content;
