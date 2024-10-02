@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import GameView from '@/views/GameView.vue'
 import GradesView from '@/views/GradesView.vue'
 import NotFoundView from '@/views/NotFoundView.vue'
-
 
 Vue.use(VueRouter)
 
@@ -14,9 +14,17 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/grades/:id',
-    component: GradesView,
-    props: true
+    path: '/game/:id',
+    component: GameView,
+    props: true,
+    children:[
+      {
+        path: 'grades',
+        props:true,
+        component: GradesView
+      }
+    ]
+    // component:() => import('@/views/GradesView.vue')
   },
   {
     path: '/about',

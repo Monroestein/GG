@@ -26,7 +26,7 @@ export default {
 }
 
 body{
-  background: #f5dfe5;
+  background: #1c1c1c;
   font-size: 0.875rem;
 }
 
@@ -35,7 +35,7 @@ body{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #632035;
+  color: #eeeeee;
 }
 
 </style>

@@ -31,18 +31,18 @@ export default {
         padding: 1vh 5vw;
         display: flex;
         justify-content: space-between;
-        background: #be4c6d;
+        background: #1c1c1c;
         align-items: center;
     }
 
     nav a {
         font-weight: bold;
         text-decoration: none;
-        color: #f394b2;
+        color: #daff7290;
     }
 
     nav a.router-link-exact-active {
-        color: #f9ecf1;
+        color: #daff7220;
     }
 
     nav img{

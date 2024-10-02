@@ -3,8 +3,7 @@
 
     <!-- Welcoming -->
     <h1>{{ msg }}</h1>
-    <p>Sit amet consectetur adipisicing elit. Laborum, quasi. Nihil nulla alias harum facere, adipisci, amet delectus doloribus assumenda a accusamus veniam nisi ullam expedita.
-    <br>Ab nemo eveniet quasi beatae iure porro, ea est, debitis, quae ipsum tempore sint!</p>
+    <p>Sit amet consectetur adipisicing elit. Laborum, quasi. Nihil nulla alias harum facere, adipisci, amet delectus doloribus assumenda a accusamus veniam nisi ullam expedita.</p>
 
   </div>
 </template>
@@ -32,6 +31,6 @@ h1{
 }
 
 a {
-  color: #e25984;
+  color: #fdb489;
 }
 </style>

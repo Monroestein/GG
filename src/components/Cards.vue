@@ -55,7 +55,7 @@ export default {
             console.log(gameData) },
 
         redirectTo(id){
-            this.$router.push('/grades/' + id)
+            this.$router.push('/game/' + id)
         }
     },
     // watch: {},
@@ -74,21 +74,22 @@ export default {
 
 main{
     margin: 2rem auto 4rem auto;
-    width: 90%;
+    width: 85%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-    gap: 1rem;
+    justify-content: center;
+    gap:20px;
 }
 
 .card{
     padding: .7rem;
-    background: #f9ecf1;
-    width: 90%;
+    background: #222;
+    width: clamp(250px, 80%, 400px);
 }
 
 .card img{
     width: 100%;
+    border-radius: 5px;
 }
 
 .game_title{
@@ -101,16 +102,16 @@ i{
 
 button{
     cursor: pointer;
-    border: 1px solid #ecc3ce;
+    border: 1px solid #daff7250;
     background: transparent;
-    color: #e25984;
+    color: #daff72;
     border-radius: 5px;
     padding: .2rem .8rem;
     transition: border 1s;
 }
 
 button:hover{
-    border: 1px solid #e25984;
+    border: 1px solid #eaffaf;
 }
 
 </style>

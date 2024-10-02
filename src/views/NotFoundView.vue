@@ -6,6 +6,10 @@
         <h1><i class="fa-solid fa-exclamation"></i></h1>
         <h2>404</h2>
         <h4>Page Not Found</h4>
+
+        <router-link :to="{path:`/`}">
+            <button>Home</button>
+        </router-link>
     </main>
 </template>
 
@@ -31,8 +35,8 @@ export default {
     main{
         margin: 5rem auto;
         color: transparent;
-        background: rgb(170, 66, 95);
-        background: linear-gradient(160deg, rgba(190,76,109,1) 27%, rgb(247, 139, 173) 100%);
+        background: #daff72;
+        background: linear-gradient(160deg, #caff38 27%, #f2ffcd60 100%);
         background-clip: text;
     }
 
@@ -42,6 +46,21 @@ export default {
 
     h2{
         font-size: 4rem;
+    }
+
+    button{
+        margin-top: 2rem;
+        cursor: pointer;
+        border: 1px solid #daff7250;
+        background: transparent;
+        color: #daff72;
+        border-radius: 5px;
+        padding: .2rem .8rem;
+        transition: border 1s;
+    }
+
+    button:hover{
+        border: 1px solid #eaffaf;
     }
     
 </style>
